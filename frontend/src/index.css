@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply m-0 p-0 font-sans min-h-screen transition-colors duration-300;
+  }
+}
+
+/* Custom Soft Glass & Neumorphic Utilities */
+.calc-shadow-dark {
+  box-shadow: 
+    0 20px 40px -15px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.calc-shadow-light {
+  box-shadow: 
+    0 24px 48px -12px rgba(130, 150, 180, 0.25),
+    0 4px 12px rgba(160, 175, 200, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.neumorph-btn-dark {
+  background: linear-gradient(145deg, #1f2535, #191e2b);
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.neumorph-btn-dark:hover {
+  background: linear-gradient(145deg, #252c3f, #1c2231);
+}
+
+.neumorph-btn-dark:active,
+.neumorph-btn-dark.btn-pressed {
+  background: #171b26;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.6);
+  transform: translateY(1px);
+}
+
+.neumorph-btn-light {
+  background: linear-gradient(145deg, #ffffff, #f1f4f9);
+  box-shadow: 
+    0 4px 12px rgba(180, 195, 215, 0.35),
+    0 1px 3px rgba(180, 195, 215, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.neumorph-btn-light:hover {
+  background: linear-gradient(145deg, #ffffff, #e9edf4);
+}
+
+.neumorph-btn-light:active,
+.neumorph-btn-light.btn-pressed {
+  background: #edf1f7;
+  box-shadow: inset 0 2px 5px rgba(140, 155, 175, 0.35);
+  transform: translateY(1px);
+}
+
+/* Orange Glowing Operator Buttons */
+.operator-btn {
+  background: linear-gradient(145deg, #ff7a1a, #ff5000);
+  box-shadow: 
+    0 4px 16px rgba(255, 80, 0, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.operator-btn:hover {
+  background: linear-gradient(145deg, #ff872e, #ff5c0d);
+  box-shadow: 
+    0 6px 20px rgba(255, 80, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.operator-btn:active,
+.operator-btn.btn-pressed {
+  background: linear-gradient(145deg, #e64500, #ff6500);
+  box-shadow: 
+    0 2px 8px rgba(255, 80, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);
+}
+
+/* Function Buttons (AC, ⌫, %) */
+.func-btn-dark {
+  background: linear-gradient(145deg, #2b3346, #222938);
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.func-btn-dark:hover {
+  background: linear-gradient(145deg, #323b52, #272f41);
+}
+
+.func-btn-dark:active,
+.func-btn-dark.btn-pressed {
+  background: #1e2432;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.5);
+  transform: translateY(1px);
+}
+
+.func-btn-light {
+  background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
+  box-shadow: 
+    0 4px 10px rgba(160, 175, 195, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.func-btn-light:hover {
+  background: linear-gradient(145deg, #e6ecf4, #d4dde8);
+}
+
+.func-btn-light:active,
+.func-btn-light.btn-pressed {
+  background: #c3cedc;
+  box-shadow: inset 0 2px 5px rgba(100, 116, 139, 0.3);
+  transform: translateY(1px);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom Thin Scrollbar for History */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* History Panel Entrance Animations */
+@keyframes slideInDesktop {
+  from {
+    opacity: 0;
+    transform: translateX(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInMobile {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.history-card-animate {
+  animation: slideInMobile 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (min-width: 1024px) {
+  .history-card-animate {
+    animation: slideInDesktop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
