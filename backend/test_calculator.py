@@ -131,3 +131,29 @@ def test_clear_history():
 
     empty_history = client.get("/api/history")
     assert len(empty_history.json()["history"]) == 0
+
+
+def test_route_aliases_without_api_prefix():
+    # Test calculate without /api prefix
+    calc_resp = client.post("/calculate", json={"expression": "10*3"})
+    assert calc_resp.status_code == 200
+    assert calc_resp.json()["result"] == 30
+
+    # Test history without /api prefix
+    hist_resp = client.get("/history")
+    assert hist_resp.status_code == 200
+    assert len(hist_resp.json()["history"]) == 1
+    assert hist_resp.json()["history"][0]["expression"] == "10*3"
+
+    # Test root and health check
+    health_resp = client.get("/health")
+    assert health_resp.status_code == 200
+    root_resp = client.get("/")
+    assert root_resp.status_code == 200
+
+    # Test delete history without /api prefix
+    del_resp = client.delete("/history")
+    assert del_resp.status_code == 200
+    empty_resp = client.get("/history")
+    assert len(empty_resp.json()["history"]) == 0
+

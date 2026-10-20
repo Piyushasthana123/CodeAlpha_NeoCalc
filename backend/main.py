@@ -42,6 +42,8 @@ async def validation_exception_handler(request, exc):
 
 
 @app.get("/api/health")
+@app.get("/health", include_in_schema=False)
+@app.get("/", include_in_schema=False)
 def health_check():
     return {"status": "ok", "app": "Calculator API v1.0"}
 
@@ -55,6 +57,7 @@ def health_check():
         422: {"description": "Invalid mathematical expression"}
     }
 )
+@app.post("/calculate", response_model=CalculateResponse, include_in_schema=False)
 def calculate_expression(req: CalculateRequest):
     try:
         result = calculate(req.expression)
@@ -90,6 +93,7 @@ def calculate_expression(req: CalculateRequest):
         200: {"description": "List of previous calculations"}
     }
 )
+@app.get("/history", response_model=HistoryResponse, include_in_schema=False)
 def fetch_history():
     history_items = get_history()
     return HistoryResponse(history=history_items)
@@ -102,6 +106,7 @@ def fetch_history():
         200: {"description": "History cleared successfully"}
     }
 )
+@app.delete("/history", response_model=MessageResponse, include_in_schema=False)
 def remove_history():
     clear_history()
     return MessageResponse(message="Calculation history cleared successfully")
